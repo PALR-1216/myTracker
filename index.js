@@ -31,7 +31,7 @@ db.serialize(() =>{
             throw err;
         }
 
-        console.log(row.hours + "\t" + row.total_ganado)
+        // console.log(row.hours + "\t" + row.total_ganado)
     })
 })
 
@@ -39,8 +39,19 @@ db.serialize(() =>{
 
 
 app.get('/', (req,res)=>{
-    var sql = 'select sum(hours), sum(total_ganado) from track'
-    res.render('home')
+    var sql = 'select sum(hours) as hours, sum(total_ganado) as total_ganado from track'
+    db.get(sql, [], (err, rows) =>{
+        var data = {
+            total_hours: rows.hours,
+            total:rows.total_ganado
+        }
+
+        res.render('home', {model:data})
+        console.log(data)
+    })
+
+    
+   
 })
 
 app.get('/addview',(req,res) =>{
@@ -62,9 +73,14 @@ app.post('/add', urlencodedParser, (req,res) =>{
 
         console.log(`A row has been inserted with rowid ${this.lastID} hours: ${hours} total ${sueldo}`)
     })
-    res.render('home')
+    res.render("saved")
+
 })
 
+
+app.get('/show', (req,res) =>{
+    res.render("showData")
+})
 
 
 app.listen(3000 ,() =>{

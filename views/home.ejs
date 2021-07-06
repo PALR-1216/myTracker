@@ -13,15 +13,23 @@
 <body>
 
     <div class="container1">
-        <h2>Total Hours</h2>
+        <% if(model.total_hours <= 0) {%>
+            <h3>No Data</h3>
+            <%} else{ %>
+        <h2>Total Hours - <%=model.total_hours%></h2>
+        <% } %>
 
-
-
-    <div class="container2">
-        <h2>Total $ earned</h2>
-        <h3>$ 45.25</h3>
     </div>
-    </div>
+
+
+
+        <div class="container2" >
+            <% if(model.total <= 0) {%>
+                <h3>No Data</h3>
+                <%} else{ %>
+            <h2>Total Earned  -$<%=model.total%></h2>
+            <% } %>
+        </div>
 
     
 </body>
