@@ -12,22 +12,18 @@
 </head>
 <body>
 
-    <div class="container1">
+    <div class="container p-3 my-3 bg-primary text-white">
         <% if(model.total_hours <= 0) {%>
             <h3>No Data</h3>
             <%} else{ %>
-        <h2>Total Hours - <%=model.total_hours%></h2>
+        <h2>Total Hours - <%=model.total_hours.toFixed(2)%></h2>
         <% } %>
 
-    </div>
 
-
-
-        <div class="container2" >
             <% if(model.total <= 0) {%>
                 <h3>No Data</h3>
                 <%} else{ %>
-            <h2>Total Earned  -$<%=model.total%></h2>
+            <h2>Total Earned  -$<%=model.total.toFixed(2)%></h2>
             <% } %>
         </div>
 

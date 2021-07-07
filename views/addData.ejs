@@ -8,9 +8,27 @@
 
 <form action="/add" method="POST">
 <div class="input-group mb-3">
-    <input type="number" class="form-control" min="0" max="10" step=".01" name="hours" required placeholder="Enter total hours" aria-label="" aria-describedby="button-addon2">
-    <input type='submit' class="btn btn-outline-secondary"  id="button-addon2"></input>
+    <input type="number" class="form-control" id="hours" min="0" max="10" step=".01" name="hours" required placeholder="Enter total hours" aria-label="" aria-describedby="button-addon2">
+    <input type='submit' class="btn btn-outline-secondary"  required class="sub" id="button-addon2"></input>
 
   </div>
+ <script>
+    // var input = document.querySelector("#hours")
+
+    // if(input == ""){
+    //     console.log("please enter data")
+    // }
+
+    // else{
+
+    //     var sub = document.querySelector("#button-addon2")
+    // sub.addEventListener('click', ()=>{
+    //     window.location.href="/show"
+    // })
+        
+    // }
+   
+
+ </script>
 
   </form>

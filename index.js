@@ -3,6 +3,7 @@ const app = express()
 const sqlite3 = require('sqlite3').verbose()
 const body_parse = require('body-parser')
 const path = require('path')
+const { resolve } = require('path')
 const sqlite = require('sqlite3').verbose()
 
 
@@ -61,20 +62,20 @@ app.get('/addview',(req,res) =>{
 app.post('/add', urlencodedParser, (req,res) =>{
     // res.send(req.body.hours)
     var hours = req.body.hours;
+
     var sueldo = hours * 7.25;
     var total2 =parseFloat(sueldo).toFixed(2)
-    
-    
-    db.run('insert into track (hours, total_ganado) values (?, ?)', [hours, total2], function(err){
+    tot = hours.toString()
+    db.run('insert into track (hours, total_ganado) values (?, ?)', [hours, total2], async function(err){
         if(err) {
             console.log(err.message)
         }
 
 
         console.log(`A row has been inserted with rowid ${this.lastID} hours: ${hours} total ${sueldo}`)
+        
     })
-    res.render("saved")
-
+    res.render('saved')    
 })
 
 
@@ -96,6 +97,18 @@ app.get('/delete', (req,res) =>{
 
         console.log("all Data from track has been delete")
     })
+})
+
+
+app.get('/deleteRow/:id', urlencodedParser,(req,res) =>{
+    var id = req.params.id;
+    sql = 'delete from track where id = (?)'
+    db.run(sql, [id], (err)=>{
+        if(err) {
+            console.log(err.message)
+        }
+    })
+    res.render("delete")
 })
 
 
