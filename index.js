@@ -79,7 +79,23 @@ app.post('/add', urlencodedParser, (req,res) =>{
 
 
 app.get('/show', (req,res) =>{
-    res.render("showData")
+    db.all('select * from track', [], async(err,rows) =>{
+        if(err) {
+            console.log(err.message)
+        }
+        res.render('showData', {model:rows})
+    })
+})
+
+
+app.get('/delete', (req,res) =>{
+    db.run('delete from track', (err) =>{
+        if(err) {
+            console.log(err.message)
+        }
+
+        console.log("all Data from track has been delete")
+    })
 })
 
 

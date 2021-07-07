@@ -17,45 +17,16 @@
 
         <tbody>
 
-
+            <% for(const row of model) {%>
             <tr>
-                <th scope="row">1</th>
-                <td>5</td>
-                <td>36.25</td>
+                <th scope="row"><%=row.id%></th>
+                <td><%=row.hours%></td>
+                <td><%= row.total_ganado%></td>
             </tr>
-
-
-            <tr>
-                <th scope="row">2</th>
-                <td>8</td>
-                <td>44.25</td>
-            </tr>
-
-
-            <tr>
-                <th scope="row">3</th>
-                <td>8</td>
-                <td>44.25</td>
-            </tr>
-
-
-
-            <tr>
-                <th scope="row">4</th>
-                <td>8</td>
-                <td>44.25</td>
-            </tr>
-
-
-
-            <tr>
-                <th scope="row">5</th>
-                <td>8</td>
-                <td>44.25</td>
-            </tr>
-
+            <% }%>
 
         </tbody>
     </table>
 
+    <a href="/delete" class="link-primary">Reset data</a>
 </div>
