@@ -111,7 +111,8 @@ app.get('/deleteRow/:id', urlencodedParser,(req,res) =>{
     res.render("delete")
 })
 
+const PORT = process.env.PORT || 3000
 
-app.listen(3000 ,() =>{
+app.listen(PORT ,() =>{
     console.log("server running in port 3000")
 })
