@@ -111,6 +111,11 @@ app.get('/deleteRow/:id', urlencodedParser,(req,res) =>{
     res.render("delete")
 })
 
+app.get('/about', (req,res) =>{
+    res.render('about')
+})
+
+
 const PORT = process.env.PORT || 3000
 
 app.listen(PORT ,() =>{
